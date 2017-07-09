@@ -1,0 +1,8 @@
+﻿<div class="jumbotron text-center">
+    <h1>Search</h1>
+
+    <select ng-model="SelectedCriteria" ng-options="S for S in Selectors"></select>      
+
+
+    <input type="text" ng-model="filterValue" class="form-control" ng-change="getFilteredData()" />
+</div>

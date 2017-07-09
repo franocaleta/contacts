@@ -6,22 +6,22 @@ namespace Contacts.Migrations
     using System.Linq;
     using Contacts.Models;
     using System.Collections.Generic;
-    internal sealed class Configuration : DbMigrationsConfiguration<Contacts.Models.ContactContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Contacts.Models.ContactContext2>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Contacts.Models.ContactContext context)
+        protected override void Seed(Contacts.Models.ContactContext2 context)
         {
             var tags = new List<Tag>();
-            tags.Add(new Tag { Name = "bff" , TagId = 1 });
+            tags.Add(new Tag { Name = "bff", TagId=1 });
             tags.Add(new Tag { Name = "frend", TagId = 2 });
 
             var tags2 = new List<Tag>();
-            tags2.Add(new Tag { Name = "bff" , TagId = 1 });
-            tags2.Add(new Tag { Name = "hakerman", TagId = 3 });
+            tags2.Add(new Tag { Name = "bff" ,TagId = 3 });
+            tags2.Add(new Tag { Name = "hakerman", TagId = 4 });
 
             var emails1 = new List<Email>();
             emails1.Add(new Email { email = "frano@gmail.com" });
@@ -39,7 +39,7 @@ namespace Contacts.Migrations
             numbers2.Add(new PhoneNumber { Number = "098 132 132" });
             numbers2.Add(new PhoneNumber { Number = "098 132 1324" });
 
-            context.Contacts.AddOrUpdate(p => p.Name,
+            context.Contacts.AddOrUpdate(p => p.ContactId,
        new Contact
        {
            ContactId = 1,

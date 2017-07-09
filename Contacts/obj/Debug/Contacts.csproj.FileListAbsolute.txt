@@ -75,10 +75,10 @@ C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Cont
 C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.csprojResolveAssemblyReference.cache
 C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.dll
 C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.pdb
-C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.Initial.resources
+C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.initializedNewDatabase.resources
 C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.csproj.GenerateResource.Cache
-C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.removedcontactref.resources
-C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.reference.resources
-C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.reference2.resources
-C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.reference3.resources
-C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.ref4.resources
+C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.deletedreference.resources
+C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.refs.resources
+C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.secondref.resources
+C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.cascadingmails.resources
+C:\Users\stipe\dokumentacija\documents\visual studio 2015\Projects\Contacts\Contacts\obj\Debug\Contacts.Migrations.cascadingphoneNumbers.resources

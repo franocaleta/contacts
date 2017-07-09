@@ -15,7 +15,7 @@ namespace Contacts.Controllers
 {
     public class ContactsController : ApiController
     {
-        private ContactContext db = new ContactContext();
+        private ContactContext2 db = new ContactContext2();
 
         // GET: api/Contacts
         public IQueryable<Contact> GetContacts()
@@ -79,6 +79,17 @@ namespace Contacts.Controllers
             {
                 return BadRequest(ModelState);
             }
+            var tags = new Tag[contact.Tags.Count];
+            contact.Tags.CopyTo(tags);
+            foreach(Tag elem in tags)
+            {
+                var dbEntry = db.Tags.FirstOrDefault(tag => tag.Name == elem.Name);
+                if (dbEntry != null)
+                {
+                    contact.Tags.Remove(elem);
+                    contact.Tags.Add(dbEntry);
+                }
+           }
 
             db.Contacts.Add(contact);
             await db.SaveChangesAsync();

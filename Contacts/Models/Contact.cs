@@ -22,6 +22,38 @@ namespace Contacts.Models
 
         public virtual List<Tag> Tags { get; set; }
 
+        public override bool Equals(Object obj)
+        {
+            Contact pt3 = obj as Contact;
+            if (pt3 == null)
+                return false;
+            else if (!pt3.Address.Equals(this.Address)) return false;
+            else if (!pt3.Name.Equals(this.Name)) return false;
+            else if (!pt3.LastName.Equals(this.LastName)) return false;
+            else
+            {
+                if (pt3.Emails.Count != this.Emails.Count) return false;
+                else if (pt3.Tags.Count != this.Tags.Count) return false;
+                else if (pt3.PhoneNumbers.Count != this.PhoneNumbers.Count) return false;
+
+                for( int i = 0; i < pt3.Emails.Count; i++)
+                {
+                    if (!this.Emails.ElementAt(i).email.Equals(pt3.Emails.ElementAt(i).email)) return false;
+                }
+
+                for (int i = 0; i < pt3.PhoneNumbers.Count; i++)
+                {
+                    if (!this.PhoneNumbers.ElementAt(i).Number.Equals(pt3.PhoneNumbers.ElementAt(i).Number)) return false;
+                }
+
+                for (int i = 0; i < pt3.Tags.Count; i++)
+                {
+                    if (!this.Tags.ElementAt(i).Name.Equals(pt3.Tags.ElementAt(i).Name)) return false;
+                }
+                return true;
+            }
+
+        }
 
     }
 
@@ -29,8 +61,7 @@ namespace Contacts.Models
     {
         public int Id { get; set; }
         public string email { get; set; }
-        [JsonIgnore]
-        public virtual Contact contact { get; set; }
+      
 
     }
 
@@ -38,8 +69,8 @@ namespace Contacts.Models
     {
         public int Id { get; set; }
         public string Number { get; set; }
-        [JsonIgnore]
-        public virtual Contact contact { get; set; }
       
+
+
     }
 }
