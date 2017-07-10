@@ -1,15 +1,10 @@
 ﻿<!-- home.html -->
-<div class="jumbotron text-center">
-    <h1>Home Page</h1>
-    <h2>  <a ng-href="#/createNew">Create New</a></h2>
-    <h2>  <a ng-href="#/search">Search</a></h2>
+
    
-        <div ng-repeat="contact in contacts">
-            <p>{{contact.Name}} {{contact.LastName}} </p>
-            {{contact.ContactId}}
-            
-          
-          
+        <div   ng-repeat="contact in contacts">
+            <div class="jumbotron text-center">
+            <h3>{{contact.Name}} {{contact.LastName}} </h3>
+    
             <div ng-repeat="phone in contact.PhoneNumbers" ng-class="{show: show}">
                 <p>
                     {{phone.Number}}

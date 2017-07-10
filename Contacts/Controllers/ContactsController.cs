@@ -23,6 +23,37 @@ namespace Contacts.Controllers
             return db.Contacts;
         }
 
+        [HttpGet]
+        [Route("search/{type}/{query}")]
+        public List<Contact> Search(string type, string query)
+        {
+            List<Contact> result = new List<Contact>();
+            switch (type)
+            {
+                case "Name":
+                    result = (from c in db.Contacts
+                           where c.Name.StartsWith(query)
+                           select c).ToList();
+                    break;
+                case "LastName":
+                    result = (from c in db.Contacts
+                           where c.LastName.StartsWith(query)
+                           select c).ToList();
+                    break;
+                case "Tags":
+                    List<Tag> tags = (from c in db.Tags
+                           where c.Name.StartsWith(query)
+                           select c).ToList();
+                    foreach(Tag tag in tags){
+
+                        List<Contact> contacts = tag.Contacts;
+                        result.AddRange(contacts);
+                    }
+                    break;
+            }
+            return result;
+        }
+
         // GET: api/Contacts/5
         [ResponseType(typeof(Contact))]
         public async Task<IHttpActionResult> GetContact(int id)
@@ -54,8 +85,6 @@ namespace Contacts.Controllers
             db.Entry(contact).Collection(p => p.Tags).Load();
             db.Entry(contact).Collection(p => p.PhoneNumbers).Load();
             db.Entry(contact).Collection(p => p.Emails).Load();
-
-            
 
             var numbers = new PhoneNumber[contact.PhoneNumbers.Count];
             contact.PhoneNumbers.CopyTo(numbers);

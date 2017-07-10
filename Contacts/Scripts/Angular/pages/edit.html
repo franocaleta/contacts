@@ -23,6 +23,7 @@
     <h5>Tags</h5>
     <table>
         <tr>
+            <td><button ng-repeat="field in contact.Tags track by $index" ng-click="remove($index)">Remove</button></td>
             <td><input ng-repeat="field in contact.Tags track by $index" type='text' ng-model='contact.Tags[$index].Name' placeholder='Tag:'></td>
         </tr>
     </table>

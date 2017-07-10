@@ -1,8 +1,23 @@
 ﻿<div class="jumbotron text-center">
     <h1>Search</h1>
 
-    <select ng-model="SelectedCriteria" ng-options="S for S in Selectors"></select>      
+    <select ng-model="type" ng-options="s for s in selectors"></select>      
 
 
-    <input type="text" ng-model="filterValue" class="form-control" ng-change="getFilteredData()" />
-</div>
+    <input type="text" ng-model="query" class="form-control" ng-change="getContacts()" />
+
+
+    
+            <div ng-repeat="contact in contacts">
+                {{contact.Name}}
+                {{contact.LastName}}
+                {{contact.Address}}
+                <div ng-repeat="tag in contact.Tags">
+                    {{tag.Name}}</div>
+                <div ng-repeat="number in contact.PhoneNumbers">
+                    {{number.Number}}</div>
+                <div ng-repeat="email in contact.Emails">
+                    {{email.Email}}
+                </div>
+          
+</div></div>
