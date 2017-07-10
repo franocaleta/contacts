@@ -31,6 +31,9 @@
          var phoneNumbers = $scope.phones.fields.map(function (item) {
              return { 'Number': item }
          })
+         console.log(emails);
+         console.log(tags);
+         console.log(phoneNumbers);
         var urlBase = 'http://localhost:53378/api'
         $http.post(urlBase+'/contacts', {
             'Name': $scope.contact.Name,

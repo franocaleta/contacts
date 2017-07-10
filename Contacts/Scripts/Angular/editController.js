@@ -41,7 +41,6 @@
             dataType: "json"
         })
      .success(function (data) {
-       //  console.log("data "+data)
          $location.url('/#');
      }).error(function (response) {
 

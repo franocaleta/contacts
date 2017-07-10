@@ -50,7 +50,87 @@ namespace Contacts.Controllers
                 return BadRequest();
             }
 
-            db.Entry(contact).State = EntityState.Modified;
+            db.Contacts.Attach(contact);
+            db.Entry(contact).Collection(p => p.Tags).Load();
+            db.Entry(contact).Collection(p => p.PhoneNumbers).Load();
+            db.Entry(contact).Collection(p => p.Emails).Load();
+
+            
+
+            var numbers = new PhoneNumber[contact.PhoneNumbers.Count];
+            contact.PhoneNumbers.CopyTo(numbers);
+
+            foreach (PhoneNumber phone in numbers)
+            {
+
+                if (phone.Id == 0)
+                {
+                    db.PhoneNumbers.Add(phone);
+                    await db.SaveChangesAsync();
+                    contact.PhoneNumbers.Add(phone);
+                 }
+                else
+                {
+                   db.Entry(phone).State = EntityState.Modified;
+                   await db.SaveChangesAsync();
+                   
+                }
+
+
+            }
+
+            var emails = new Email[contact.Emails.Count];
+            contact.Emails.CopyTo(emails);
+
+            foreach (Email email in emails)
+            {
+
+                if (email.Id == 0)
+                {
+                    db.Emails.Add(email);
+                    await db.SaveChangesAsync();
+                    contact.Emails.Add(email);
+                }
+                else
+                { 
+                    db.Entry(email).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                              
+                }
+             }
+
+            var tags = new Tag[contact.Tags.Count];
+            contact.Tags.CopyTo(tags);
+
+            foreach (Tag tag in tags)
+            {
+
+                if (tag.TagId == 0)
+                {
+                    Tag dbEntry = db.Tags.FirstOrDefault(p => p.Name == tag.Name);
+                    if (dbEntry != null)
+                    {
+                        contact.Tags.Add(dbEntry);
+                    }
+                    else
+                    {
+                        db.Tags.Add(tag);
+                        await db.SaveChangesAsync();
+                        contact.Tags.Add(tag);
+
+                    }
+
+                }else
+                {
+                    db.Entry(tag).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                }            
+
+            }
+
+
+
+                db.Entry(contact).State = EntityState.Modified;
 
             try
             {
@@ -90,6 +170,8 @@ namespace Contacts.Controllers
                     contact.Tags.Add(dbEntry);
                 }
            }
+
+          
 
             db.Contacts.Add(contact);
             await db.SaveChangesAsync();
