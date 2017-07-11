@@ -47,7 +47,14 @@ namespace Contacts.Controllers
                     foreach(Tag tag in tags){
 
                         List<Contact> contacts = tag.Contacts;
-                        result.AddRange(contacts);
+                        foreach(Contact con in contacts)
+                        {
+                            if (!result.Contains(con))
+                            {
+                                result.Add(con);
+                            }
+                        }
+                      
                     }
                     break;
             }
@@ -81,6 +88,15 @@ namespace Contacts.Controllers
                 return BadRequest();
             }
 
+
+            
+            List<PhoneNumber> phs = new List<PhoneNumber>();
+            phs.AddRange(contact.PhoneNumbers);
+            List<Email> ems = new List<Email>();
+            ems.AddRange(contact.Emails);
+            List<Tag> tgs = new List<Tag>();
+            tgs.AddRange(contact.Tags);
+
             db.Contacts.Attach(contact);
             db.Entry(contact).Collection(p => p.Tags).Load();
             db.Entry(contact).Collection(p => p.PhoneNumbers).Load();
@@ -89,6 +105,7 @@ namespace Contacts.Controllers
             var numbers = new PhoneNumber[contact.PhoneNumbers.Count];
             contact.PhoneNumbers.CopyTo(numbers);
 
+           
             foreach (PhoneNumber phone in numbers)
             {
 
@@ -98,8 +115,12 @@ namespace Contacts.Controllers
                     await db.SaveChangesAsync();
                     contact.PhoneNumbers.Add(phone);
                  }
-                else
+                else if (!phs.Contains(phone))
                 {
+                    db.PhoneNumbers.Remove(phone);
+                    await db.SaveChangesAsync();
+                }
+                else {
                    db.Entry(phone).State = EntityState.Modified;
                    await db.SaveChangesAsync();
                    
@@ -110,7 +131,7 @@ namespace Contacts.Controllers
 
             var emails = new Email[contact.Emails.Count];
             contact.Emails.CopyTo(emails);
-
+           
             foreach (Email email in emails)
             {
 
@@ -120,13 +141,19 @@ namespace Contacts.Controllers
                     await db.SaveChangesAsync();
                     contact.Emails.Add(email);
                 }
+                else if (!ems.Contains(email))
+                {
+                    db.Emails.Remove(email);
+                    await db.SaveChangesAsync();
+                }
                 else
                 { 
                     db.Entry(email).State = EntityState.Modified;
-                    await db.SaveChangesAsync();
-                              
+                    await db.SaveChangesAsync();                 
                 }
              }
+
+          
 
             var tags = new Tag[contact.Tags.Count];
             contact.Tags.CopyTo(tags);
@@ -141,23 +168,27 @@ namespace Contacts.Controllers
                     {
                         contact.Tags.Add(dbEntry);
                     }
-                    else
+                   else
                     {
                         db.Tags.Add(tag);
                         await db.SaveChangesAsync();
                         contact.Tags.Add(tag);
 
                     }
+                }
+                else if (!tgs.Contains(tag))
 
-                }else
                 {
-                    db.Entry(tag).State = EntityState.Modified;
-                    await db.SaveChangesAsync();
+                    contact.Tags.Remove(tag);
+                }
+                else
+                {
+                  db.Entry(tag).State = EntityState.Modified;
+                  await db.SaveChangesAsync();
+                      
                 }            
 
             }
-
-
 
                 db.Entry(contact).State = EntityState.Modified;
 

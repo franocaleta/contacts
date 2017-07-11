@@ -7,7 +7,7 @@
     $scope.addFormField = function () {
         $scope.contact.Tags.push('');
     }
-
+   
     //emails
     $scope.addEmailField = function () {
         $scope.contact.Emails.push('');
@@ -15,6 +15,18 @@
     //phones
     $scope.addPhoneField = function () {
         $scope.contact.PhoneNumbers.push('');
+    }
+   
+
+    $scope.removeEmail = function ($index) {
+        $scope.contact.Emails.splice($index, 1);
+    }
+
+    $scope.removePhone = function ($index) {
+        $scope.contact.PhoneNumbers.splice($index, 1);
+    }
+    $scope.removeTag = function ($index) {
+        $scope.contact.Tags.splice($index, 1);
     }
    
 

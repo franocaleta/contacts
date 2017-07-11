@@ -1,23 +1,48 @@
-﻿<div class="jumbotron text-center">
+﻿<div class="container">
     <h1>Search</h1>
 
-    <select ng-model="type" ng-options="s for s in selectors"></select>      
-
-
-    <input type="text" ng-model="query" class="form-control" ng-change="getContacts()" />
-
-
     
-            <div ng-repeat="contact in contacts">
-                {{contact.Name}}
-                {{contact.LastName}}
-                {{contact.Address}}
-                <div ng-repeat="tag in contact.Tags">
-                    {{tag.Name}}</div>
-                <div ng-repeat="number in contact.PhoneNumbers">
-                    {{number.Number}}</div>
-                <div ng-repeat="email in contact.Emails">
-                    {{email.Email}}
+    <div class="form-group">
+
+        <label for="select" class="col-lg-2 control-label">Query type</label>
+        <select class="styled-select slate" id="select" ng-model="type" ng-options="s for s in selectors"></select>   
+
+        <label for="query" class="col-lg-2 control-label">Query</label>
+        <input type="text"  ng-model="query" ng-change="getContacts()" />
+    </div>
+       
+
+
+   
+
+
+
+        <div ng-repeat="contact in contacts">
+            <div class="container">
+                <div class="jumbotron col-lg-8 col-lg-offset-2">
+                    <h3> Name : {{contact.Name}} </h3>
+                    <h3> Lastname :  {{contact.LastName}} </h3>
+
+                    <h3>Phone Numbers:</h3>
+                    <div class="container" ng-repeat="phone in contact.PhoneNumbers" ng-class="{show: show}">
+                        <p><span class="col-lg-11">{{phone.Number}}</span> </p>
+
+                    </div>
+
+                    <h3>Emails:</h3>
+                    <div class="container" ng-repeat="email in contact.Emails" ng-class="{show: show}">
+                        <p>
+                            <span class="col-lg-11"> {{email.email}}</span>
+                        </p>
+                    </div>
+
+                    <h3>Tags:</h3>
+                    <div class="container" ng-repeat="tag in contact.Tags" ng-class="{show: show}">
+                        <p>
+                            <span class="col-lg-11"> #{{tag.Name}}</span>
+                        </p>
+                    </div>
                 </div>
-          
-</div></div>
+            </div>
+            </div>
+</div>
