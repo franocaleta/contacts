@@ -1,19 +1,21 @@
 ﻿<div class="container">
-    <h1>Search</h1>
+    <div class="col-lg-8 col-lg-offset-2">
+        <h1>Search</h1>
 
-    
-    <div class="form-group">
 
-        <label for="select" class="col-lg-2 control-label">Query type</label>
-        <select class="styled-select slate" id="select" ng-model="type" ng-options="s for s in selectors"></select>   
+        <div class="container">
 
-        <label for="query" class="col-lg-2 control-label">Query</label>
-        <input type="text"  ng-model="query" ng-change="getContacts()" />
+            <label for="select" class="col-lg-2 control-label">Query type</label>
+            <select class="styled-select slate" id="select" ng-model="type" ng-options="s for s in selectors"></select>
+            <br>
+
+            <label for="query" class="col-lg-2 control-label">Query</label>
+            <input type="text" ng-model="query" ng-change="getContacts()" />
+        </div>
+
     </div>
-       
 
 
-   
 
 
 
@@ -44,5 +46,5 @@
                     </div>
                 </div>
             </div>
-            </div>
-</div>
+        </div>
+    </div>

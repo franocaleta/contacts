@@ -181,12 +181,14 @@ namespace Contacts.Controllers
                 {
                     contact.Tags.Remove(tag);
                 }
-                else
+                 else
                 {
-                  db.Entry(tag).State = EntityState.Modified;
-                  await db.SaveChangesAsync();
+                        db.Entry(tag).State = EntityState.Modified;
+                        await db.SaveChangesAsync();
+                }
+                 
                       
-                }            
+                          
 
             }
 
