@@ -15,7 +15,7 @@ namespace Contacts.Controllers
 {
     public class ContactsController : ApiController
     {
-        private ContactContext2 db = new ContactContext2();
+        private ContactContext db = new ContactContext();
 
         // GET: api/Contacts
         public IQueryable<Contact> GetContacts()

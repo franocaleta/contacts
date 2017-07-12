@@ -214,35 +214,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201707091227487_initializedNewDatabase.cs" />
-    <Compile Include="Migrations\201707091227487_initializedNewDatabase.Designer.cs">
-      <DependentUpon>201707091227487_initializedNewDatabase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091236558_deleted-reference.cs" />
-    <Compile Include="Migrations\201707091236558_deleted-reference.Designer.cs">
-      <DependentUpon>201707091236558_deleted-reference.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091259343_refs.cs" />
-    <Compile Include="Migrations\201707091259343_refs.Designer.cs">
-      <DependentUpon>201707091259343_refs.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091306462_second-ref.cs" />
-    <Compile Include="Migrations\201707091306462_second-ref.Designer.cs">
-      <DependentUpon>201707091306462_second-ref.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091326074_cascading-mails.cs" />
-    <Compile Include="Migrations\201707091326074_cascading-mails.Designer.cs">
-      <DependentUpon>201707091326074_cascading-mails.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201707091329592_cascading-phoneNumbers.cs" />
-    <Compile Include="Migrations\201707091329592_cascading-phoneNumbers.Designer.cs">
-      <DependentUpon>201707091329592_cascading-phoneNumbers.cs</DependentUpon>
+    <Compile Include="Migrations\201707122259122_mig.cs" />
+    <Compile Include="Migrations\201707122259122_mig.Designer.cs">
+      <DependentUpon>201707122259122_mig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\ContactContext2.cs" />
+    <Compile Include="Models\ContactContext.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -340,23 +320,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201707091227487_initializedNewDatabase.resx">
-      <DependentUpon>201707091227487_initializedNewDatabase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091236558_deleted-reference.resx">
-      <DependentUpon>201707091236558_deleted-reference.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091259343_refs.resx">
-      <DependentUpon>201707091259343_refs.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091306462_second-ref.resx">
-      <DependentUpon>201707091306462_second-ref.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091326074_cascading-mails.resx">
-      <DependentUpon>201707091326074_cascading-mails.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201707091329592_cascading-phoneNumbers.resx">
-      <DependentUpon>201707091329592_cascading-phoneNumbers.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201707122259122_mig.resx">
+      <DependentUpon>201707122259122_mig.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
